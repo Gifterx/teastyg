@@ -3,6 +3,11 @@
 <head>
     <title>User Information Form</title>
     <style>
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
         body {
             font-family: Arial, sans-serif;
             background-color: #f7f7f7;
@@ -14,6 +19,7 @@
             padding: 20px;
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
         }
 
         h2 {
@@ -24,6 +30,7 @@
             display: block;
             margin-bottom: 10px;
             font-weight: bold;
+            animation: fadeIn 1s ease-in-out;
         }
 
         input[type="text"] {
@@ -33,6 +40,7 @@
             border-radius: 4px;
             box-sizing: border-box;
             margin-bottom: 20px;
+            animation: fadeIn 1s ease-in-out;
         }
 
         input[type="submit"] {
@@ -46,6 +54,12 @@
             font-size: 16px;
             border-radius: 4px;
             cursor: pointer;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .animate {
+            animation: fadeIn 1s ease-in-out;
+            animation-delay: 0.5s;
         }
     </style>
 </head>
@@ -53,16 +67,16 @@
     <div class="container">
         <h2>Enter Your Information</h2>
         <form id="infoForm" action="">
-            <label for="email">Email:</label>
+            <label for="email" class="animate">Email:</label>
             <input type="text" id="email" name="email" required><br>
 
-            <label for="name">Name:</label>
+            <label for="name" class="animate">Name:</label>
             <input type="text" id="name" name="name" required><br>
 
-            <label for="phone">Phone Number:</label>
+            <label for="phone" class="animate">Phone Number:</label>
             <input type="text" id="phone" name="phone" required><br>
 
-            <input type="submit" value="Submit" onClick="getFormData(event)">
+            <input type="submit" value="Submit" onClick="getFormData(event)" class="animate">
         </form>
     </div>
 
