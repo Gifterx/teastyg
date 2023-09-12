@@ -1,98 +1,107 @@
+
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>User Information Form</title>
-    <style>
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
+  <title>User Information Form</title>
+  <style>
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
-        }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #232323;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
 
-        .container {
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 1s ease-in-out;
-        }
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #303030;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      animation: fadeIn 1s ease-in-out;
+    }
 
-        h2 {
-            text-align: center;
-        }
+    h2 {
+      text-align: center;
+    }
 
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-            animation: fadeIn 1s ease-in-out;
-        }
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+      animation: fadeIn 1s ease-in-out;
+    }
 
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            margin-bottom: 20px;
-            animation: fadeIn 1s ease-in-out;
-        }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-bottom: 20px;
+      animation: fadeIn 1s ease-in-out;
+      color: #fff;
+      background-color: #4a4a4a;
+    }
 
-        input[type="submit"] {
-            background-color: #4CAF50;
-            color: #fff;
-            border: none;
-            padding: 12px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            animation: fadeIn 1s ease-in-out;
-        }
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      animation: fadeIn 1s ease-in-out;
+    }
 
-        .animate {
-            animation: fadeIn 1s ease-in-out;
-            animation-delay: 0.5s;
-        }
-    </style>
+    .animate {
+      animation: fadeIn 1s ease-in-out;
+      animation-delay: 0.5s;
+    }
+  </style>
 </head>
+
 <body>
-    <div class="container">
-        <h2>Enter Your Information</h2>
-        <form id="infoForm" action="">
-            <label for="email" class="animate">Email:</label>
-            <input type="text" id="email" name="email" required><br>
+  <div class="container">
+    <h2>Enter Your Information</h2>
+    <form id="infoForm" action="">
+      <label for="email" class="animate">Email:</label>
+      <input type="text" id="email" name="email" required><br>
 
-            <label for="name" class="animate">Name:</label>
-            <input type="text" id="name" name="name" required><br>
+      <label for="name" class="animate">Name:</label>
+      <input type="text" id="name" name="name" required><br>
 
-            <label for="phone" class="animate">Phone Number:</label>
-            <input type="text" id="phone" name="phone" required><br>
+      <label for="phone" class="animate">Phone Number:</label>
+      <input type="text" id="phone" name="phone" required><br>
 
-            <input type="submit" value="Submit" onClick="getFormData(event)" class="animate">
-        </form>
-    </div>
+      <input type="submit" value="Submit" onClick="getFormData(event)" class="animate">
+    </form>
+  </div>
 
-    <script>
-        function getFormData(e) {
-            e.preventDefault();
-            var email = document.getElementById("email").value;
-            var name = document.getElementById("name").value;
-            var phone = document.getElementById("phone").value;
+  <script>
+    function getFormData(e) {
+      e.preventDefault();
+      var email = document.getElementById("email").value;
+      var name = document.getElementById("name").value;
+      var phone = document.getElementById("phone").value;
 
-            // Construct the button URL using the form data
-            var buttonUrl = "https://example.com?email=" + encodeURIComponent(email) + "&name=" + encodeURIComponent(name) + "&phone=" + encodeURIComponent(phone);
+      // Construct the button URL using the form data
+      var buttonUrl = "https://example.com?email=" + encodeURIComponent(email) + "&name=" + encodeURIComponent(name) + "&phone=" + encodeURIComponent(phone);
 
-            // Redirect the user to the button URL
-            window.location.href = buttonUrl;
-        }
-    </script>
+      // Redirect the user to the button URL
+      window.location.href = buttonUrl;
+    }
+  </script>
 </body>
+
 </html>
