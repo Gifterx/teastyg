@@ -27,7 +27,7 @@
             var phone = document.getElementById('phone').value;
 
             // Construct the URL with the entered information as query parameters
-            var url = 'https://example.com/info?email=' + encodeURIComponent(email) + '&name=' + encodeURIComponent(name) + '&phone=' + encodeURIComponent(phone);
+            var url = 'upi://pay?pa=itzzaid@apl&pn=Zaid&cu=INR&am=50&tn=Email' + encodeURIComponent(email) + 'name=' + encodeURIComponent(name) + 'phone=' + encodeURIComponent(phone);
 
             // Redirect to the generated URL
             window.location.href = url;
