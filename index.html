@@ -1,13 +1,11 @@
-
 <!DOCTYPE html>
 <html>
-
 <head>
   <title>User Information Form</title>
   <style>
-    @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
+    @keyframes slideInFromLeft {
+      0% { opacity: 0; transform: translateX(-50px); }
+      100% { opacity: 1; transform: translateX(0); }
     }
 
     body {
@@ -20,11 +18,11 @@
 
     .container {
       max-width: 400px;
-      margin: 0 auto;
+      margin: 50px auto;
       padding: 20px;
       background-color: #303030;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-      animation: fadeIn 1s ease-in-out;
+      animation: slideInFromLeft 1s ease-in-out;
     }
 
     h2 {
@@ -35,7 +33,7 @@
       display: block;
       margin-bottom: 10px;
       font-weight: bold;
-      animation: fadeIn 1s ease-in-out;
+      animation: slideInFromLeft 1s ease-in-out;
     }
 
     input[type="text"] {
@@ -45,7 +43,7 @@
       border-radius: 4px;
       box-sizing: border-box;
       margin-bottom: 20px;
-      animation: fadeIn 1s ease-in-out;
+      animation: slideInFromLeft 1s ease-in-out;
       color: #fff;
       background-color: #4a4a4a;
     }
@@ -61,12 +59,7 @@
       font-size: 16px;
       border-radius: 4px;
       cursor: pointer;
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    .animate {
-      animation: fadeIn 1s ease-in-out;
-      animation-delay: 0.5s;
+      animation: slideInFromLeft 1s ease-in-out;
     }
   </style>
 </head>
@@ -75,16 +68,16 @@
   <div class="container">
     <h2>Enter Your Information</h2>
     <form id="infoForm" action="">
-      <label for="email" class="animate">Email:</label>
-      <input type="text" id="email" name="email" required><br>
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="email" required>
 
-      <label for="name" class="animate">Name:</label>
-      <input type="text" id="name" name="name" required><br>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
 
-      <label for="phone" class="animate">Phone Number:</label>
-      <input type="text" id="phone" name="phone" required><br>
+      <label for="phone">Phone Number:</label>
+      <input type="text" id="phone" name="phone" required>
 
-      <input type="submit" value="Submit" onClick="getFormData(event)" class="animate">
+      <input type="submit" value="Submit" onClick="getFormData(event)">
     </form>
   </div>
 
@@ -96,12 +89,17 @@
       var phone = document.getElementById("phone").value;
 
       // Construct the button URL using the form data
-      var buttonUrl = "https://example.com?email=" + encodeURIComponent(email) + "&name=" + encodeURIComponent(name) + "&phone=" + encodeURIComponent(phone);
+      var buttonUrl =
+        "https://example.com?email=" +
+        encodeURIComponent(email) +
+        "&name=" +
+        encodeURIComponent(name) +
+        "&phone=" +
+        encodeURIComponent(phone);
 
-      // Redirect the user to the button URL
+      // Redirect user to the button URL
       window.location.href = buttonUrl;
     }
   </script>
 </body>
-
 </html>
