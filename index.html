@@ -6,21 +6,21 @@
     body {
       font-family: Arial, sans-serif;
       background-color: #f2f2f2;
-      margin: 0;
-      padding: 0;
     }
 
     .container {
-      max-width: 400px;
-      margin: 50px auto;
-      background-color: #fff;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
     }
 
-    .questionnaire {
+    .card {
+      max-width: 400px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
       padding: 20px;
       animation: floatIn 2s infinite;
-      text-align: center;
     }
 
     h2 {
@@ -71,10 +71,9 @@
     }
   </style>
 </head>
-
 <body>
   <div class="container">
-    <div class="questionnaire">
+    <div class="card">
       <h2>Enter Your Information</h2>
       <form id="infoForm" action="">
         <label for="email">Email:</label>
@@ -98,14 +97,20 @@
       var name = document.getElementById("name").value;
       var phone = document.getElementById("phone").value;
 
-      // Construct the button URL using the form data
+      // Get the amount from the website URL
+      var urlParams = new URLSearchParams(window.location.search);
+      var amount = urlParams.get("amount");
+
+      // Construct the button URL using the form and amount data
       var buttonUrl =
         "https://example.com?email=" +
         encodeURIComponent(email) +
         "&name=" +
         encodeURIComponent(name) +
         "&phone=" +
-        encodeURIComponent(phone);
+        encodeURIComponent(phone) +
+        "&amount=" +
+        encodeURIComponent(amount);
 
       // Redirect user to the button URL
       window.location.href = buttonUrl;
