@@ -1,107 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Form with Dark Background</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #000;
-      color: #fff;
-      margin: 0;
-      padding: 0;
-    }
-    
-    .container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      width: 100%;
-    }
-
-    .card {
-      background-color: #333;
-      padding: 50px;
-      max-width: 500px;
-      width: 100%;
-      box-sizing: border-box;
-    }
-
-    h1, p {
-      text-align: center;
-    }
-
-    label {
-      display: block;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    input[type="text"] {
-      width: 100%;
-      padding: 10px;
-      border: none;
-      background-color: #555;
-      color: #fff;
-      margin-bottom: 20px;
-      box-sizing: border-box;
-    }
-
-    input[type="submit"] {
-      background-color: #4CAF50;
-      color: #fff;
-      border: none;
-      padding: 12px 20px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      border-radius: 4px;
-      cursor: pointer;
-      width: 100%;
-    }
-  </style>
+    <title>UPI Transaction Verification</title>
 </head>
 <body>
-  <div class="container">
-    <div class="card">
-      <h1>Enter Your Information</h1>
-      <form id="infoForm" action="">
-        <label for="email">Email:</label>
-        <input type="text" id="email" name="email" required>
+    <form method="post" action="https://api.upi.com/transaction/verify">
+        <input type="text" name="utr" placeholder="Enter UTR number" required>
+        <input type="submit" value="Verify">
+    </form>
 
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+    <?php
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $utr = $_POST['utr'];
+        $url = "https://api.upi.com/transaction/verify?utr=".$utr;
 
-        <label for="phone">Phone Number:</label>
-        <input type="text" id="phone" name="phone" required>
+        // Make an API call to verify the UPI transaction
+        $response = file_get_contents($url);
+        $transactionStatus = json_decode($response, true);
 
-        <input type="submit" value="Submit" onclick="getFormData(event)">
-      </form>
-    </div>
-  </div>
-
-  <script>
-    function getFormData(e) {
-      e.preventDefault();
-      var email = document.getElementById("email").value;
-      var name = document.getElementById("name").value;
-      var phone = document.getElementById("phone").value;
-
-      // Get the amount from the website URL
-      var urlParams = new URLSearchParams(window.location.search);
-      var amount = urlParams.get('amount');
-
-      // Construct the button URL using the form and amount data
-      var buttonUrl =
-        "upi://pay?pa=itzzaid@apl&pn=Zaid&cu=INR&tn=Email " +
-        encodeURIComponent(email) +
-        "&am=" +
-        encodeURIComponent(amount);
-
-      // Redirect user to the button URL
-      window.location.href = buttonUrl;
+        // Print the transaction status
+        echo "<h3>Transaction Status</h3>";
+        echo "<p>Response Code: " . $transactionStatus['responseCode'] . "</p>";
+        echo "<p>Response Message: " . $transactionStatus['responseMessage'] . "</p>";
+        echo "<p>Transaction ID: " . $transactionStatus['transactionId'] . "</p>";
+        echo "<p>Transaction Status: " . $transactionStatus['status'] . "</p>";
     }
-  </script>
+    ?>
 </body>
 </html>
