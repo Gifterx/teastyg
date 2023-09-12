@@ -6,15 +6,12 @@
     body {
       font-family: Arial, sans-serif;
       background-color: #f2f2f2;
-    }
-
-    .container {
+      height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100vh;
     }
-
+    
     .card {
       max-width: 400px;
       background-color: #fff;
@@ -54,25 +51,30 @@
       cursor: pointer;
       width: 100%;
     }
+
+    /* Media Queries for Mobile */
+    @media screen and (max-width: 600px) {
+      .card {
+        max-width: 300px;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="card">
-      <h2>Enter Your Information</h2>
-      <form id="infoForm" action="">
-        <label for="email">Email:</label>
-        <input type="text" id="email" name="email" required>
+  <div class="card">
+    <h2>Enter Your Information</h2>
+    <form id="infoForm" action="">
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="email" required>
 
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
 
-        <label for="phone">Phone Number:</label>
-        <input type="text" id="phone" name="phone" required>
+      <label for="phone">Phone Number:</label>
+      <input type="text" id="phone" name="phone" required>
 
-        <input type="submit" value="Submit" onClick="getFormData(event)">
-      </form>
-    </div>
+      <input type="submit" value="Submit" onClick="getFormData(event)">
+    </form>
   </div>
 
   <script>
@@ -83,8 +85,8 @@
       var phone = document.getElementById("phone").value;
 
       // Get the amount from the website URL
-      var params = new URLSearchParams(window.location.search);
-      var amount = params.get('amount');
+      var urlParams = new URLSearchParams(window.location.search);
+      var amount = urlParams.get('amount');
 
       // Construct the button URL using the form and amount data
       var buttonUrl =
