@@ -20,11 +20,10 @@
       background-color: #fff;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
       padding: 20px;
-      animation: floatIn 2s infinite;
     }
 
     h2 {
-      margin-top: 0;
+      text-align: center;
     }
 
     label {
@@ -53,21 +52,7 @@
       font-size: 16px;
       border-radius: 4px;
       cursor: pointer;
-    }
-
-    @keyframes floatIn {
-      0% {
-        transform: translateY(-50px);
-        opacity: 0;
-      }
-      50% {
-        transform: translateY(50px);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-50px);
-        opacity: 0;
-      }
+      width: 100%;
     }
   </style>
 </head>
@@ -98,8 +83,8 @@
       var phone = document.getElementById("phone").value;
 
       // Get the amount from the website URL
-      var urlParams = new URLSearchParams(window.location.search);
-      var amount = urlParams.get("amount");
+      var params = new URLSearchParams(window.location.search);
+      var amount = params.get('amount');
 
       // Construct the button URL using the form and amount data
       var buttonUrl =
