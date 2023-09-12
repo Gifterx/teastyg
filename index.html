@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Input Button Example</title>
+</head>
+<body>
+    <form id="emailForm">
+        <label for="email">Enter your email:</label>
+        <input type="email" id="email" required>
+        <button type="submit" id="submitButton">Go to Email</button>
+    </form>
+
+    <script>
+        document.getElementById('emailForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Get the entered email
+            var email = document.getElementById('email').value;
+
+            // Redirect to the email URL with the entered email as a query parameter
+            window.location.href = 'https://example.com/email?email=' + encodeURIComponent(email);
+        });
+    </script>
+</body>
+</html>
