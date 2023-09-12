@@ -1,38 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Simple E-commerce Website</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
+  <title>Anime Image Converter</title>
+  <style>
+    /* CSS styling to give an anime-like effect */
+    img {
+      filter: saturate(2) contrast(1.2) brightness(1.1);
+      border: 5px solid black;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>My E-commerce Store</h1>
-    <div id="cart">Cart (0)</div>
-  </header>
-  
-  <section id="products">
-    <div class="product">
-      <h3>Product 1</h3>
-      <img src="https://justpaste.it/img/3abbf184292ebcddbcd62bc75d81ded7.jpg" alt="Product 1">
-      <p>Price: $10</p>
-      <button onclick="addToCart('Product 1', 10)">Add to Cart</button>
-    </div>
-    
-    <div class="product">
-      <h3>Product 2</h3>
-      <img src="https://justpaste.it/img/3abbf184292ebcddbcd62bc75d81ded7.jpg" alt="Product 2">
-      <p>Price: $15</p>
-      <button onclick="addToCart('Product 2', 15)">Add to Cart</button>
-    </div>
-    
-    <div class="product">
-      <h3>Product 3</h3>
-      <img src="https://justpaste.it/img/3abbf184292ebcddbcd62bc75d81ded7.jpg" alt="Product 3">
-      <p>Price: $20</p>
-      <button onclick="addToCart('Product 3', 20)">Add to Cart</button>
-    </div>
-  </section>
-  
-  <script src="script.js"></script>
+  <h1>Anime Image Converter</h1>
+  <form>
+    <input type="file" id="uploadInput" accept="image/*">
+  </form>
+  <img id="previewImage" src="#" alt="Preview">
+
+  <script>
+    // JavaScript code to preview uploaded image
+    var uploadInput = document.getElementById('uploadInput');
+    var previewImage = document.getElementById('previewImage');
+
+    uploadInput.addEventListener('change', function(event) {
+      var file = event.target.files[0];
+      var reader = new FileReader();
+
+      reader.onload = function(event) {
+        previewImage.src = event.target.result;
+      };
+
+      reader.readAsDataURL(file);
+    });
+  </script>
 </body>
 </html>
