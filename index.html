@@ -1,24 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Email Input Button Example</title>
+    <title>Information Input Button Example</title>
 </head>
 <body>
-    <form id="emailForm">
-        <label for="email">Enter your Real email Because Details Will Be Sended To Your Email:</label>
-        <input type="email" id="email" required>
-        <button type="submit" id="submitButton">Pay Now</button>
+    <form id="infoForm">
+        <label for="email">Enter your email:</label>
+        <input type="email" id="email" required><br><br>
+
+        <label for="name">Enter your name:</label>
+        <input type="text" id="name" required><br><br>
+
+        <label for="phone">Enter your phone number:</label>
+        <input type="tel" id="phone" required><br><br>
+
+        <button type="submit" id="submitButton">Submit Information</button>
     </form>
 
     <script>
-        document.getElementById('emailForm').addEventListener('submit', function(event) {
+        document.getElementById('infoForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
-            // Get the entered email
+            // Get the entered email, name, and phone number
             var email = document.getElementById('email').value;
+            var name = document.getElementById('name').value;
+            var phone = document.getElementById('phone').value;
 
-            // Redirect to the email URL with the entered email as a query parameter
-            window.location.href = 'upi://pay?pa=itzzaid@apl&pn=Zaid&cu=INR&am=50&tn=Email ' + encodeURIComponent(email);
+            // Construct the URL with the entered information as query parameters
+            var url = 'https://example.com/info?email=' + encodeURIComponent(email) + '&name=' + encodeURIComponent(name) + '&phone=' + encodeURIComponent(phone);
+
+            // Redirect to the generated URL
+            window.location.href = url;
         });
     </script>
 </body>
